@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "f4b4530b-f003-4293-a1fa-c90d566d20c7",
+		"name": "AM KNN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MandarArquivo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:6666/knn",
+					"host": [
+						"localhost"
+					],
+					"port": "6666",
+					"path": [
+						"knn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
