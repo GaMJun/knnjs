@@ -11,6 +11,7 @@ const storage = multer.diskStorage({
     }
 });
 
+//const upload = multer();
 const upload = multer({
     storage: storage,
     limits: {fileSize: 1024 * 1024 * 10},
@@ -26,6 +27,11 @@ module.exports = async function (app) {
             next();
         }, asAction(app.controllers.knn.load));
 
+    app.route('/knn')
+        .get((req, res, next) => {
+            req.params.app = app;
+            next();
+        }, asAction(app.controllers.knn.validation));
     // app.route('/restricted')
     //     .get((req, res, next) => {
     //         req.params.app = app;
