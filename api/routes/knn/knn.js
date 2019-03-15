@@ -30,8 +30,17 @@ module.exports = async function (app) {
     app.route('/knn')
         .get((req, res, next) => {
             req.params.app = app;
+            req.params.headers = req.headers;
             next();
         }, asAction(app.controllers.knn.validation));
+
+    app.route('/knnTest')
+        .post((req, res, next) => {
+            req.params.app = app;
+            req.params.headers = req.headers;
+            next();
+        }, asAction(app.controllers.knn.test));
+
     // app.route('/restricted')
     //     .get((req, res, next) => {
     //         req.params.app = app;
