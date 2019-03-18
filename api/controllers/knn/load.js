@@ -103,7 +103,7 @@ module.exports = {
             let dataSetArray_C2 = []; // All objects of type class 2
             let trainingArray = []; // 50% of dataSet
             let validationArray = []; // 25% of dataSet
-            let testArray = [] // 25% of dataSet
+            let testArray = []; // 25% of dataSet
 
 
             csv.fromPath(inputs.file_path, {headers: true}).on("data", function (data) {
