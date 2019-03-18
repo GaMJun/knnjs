@@ -1,3 +1,4 @@
+const load = require('./load')
 module.exports = {
     friendlyName: 'Create a Ademir',
     description: 'Adiciona um ademir ao banco de dados do serviço',
@@ -9,15 +10,15 @@ module.exports = {
         k: {
             type: 'number',
             required: true
-        }
+        },
         // file: {
         //     type: 'ref',
         //     required: true
         // },
-        // file_path: {
-        //     type: 'string',
-        //     required: false,
-        // },
+        file_path: {
+            type: 'string',
+            required: false,
+        },
         // password: {
         //     type: 'string',
         //     trim: true,
@@ -128,6 +129,11 @@ module.exports = {
                             let mediaErroPonderadoTotal = 0;
 
                             for (let m=0; m < 10; m++){
+
+                                if (m > 0){
+
+                                    //call load.js
+                                }
 
                                 let mediaAcertoMajoritario = 0;
                                 let mediaErroMajoritario = 0;
@@ -271,6 +277,9 @@ module.exports = {
                                 mediaAcertoMajoritario = ((majorityAcertCounter * 100) / (majorityAcertCounter + majorityErrosCounter));
                                 mediaErroMajoritario = ((majorityErrosCounter * 100) / (majorityAcertCounter + majorityErrosCounter));
 
+                                console.log('M: ' + m);
+                                console.log(mediaAcertoMajoritario);
+
                                 MajorityAcerts[m] = mediaAcertoMajoritario;
                                 MajorityErros[m] = mediaErroMajoritario;
 
@@ -285,6 +294,8 @@ module.exports = {
 
                                 mediaAcertoPonderadoTotal = mediaAcertoPonderadoTotal + mediaAcertoPonderado;
                                 mediaErroPonderadoTotal = mediaErroPonderadoTotal + mediaErroPonderado;
+
+                                load.fn(inputs,exits);
                             }
 
                             // Calculo das medias

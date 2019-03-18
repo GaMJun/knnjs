@@ -105,6 +105,7 @@ module.exports = {
             let validationArray = []; // 25% of dataSet
             let testArray = [] // 25% of dataSet
 
+
             csv.fromPath(inputs.file_path, {headers: true}).on("data", function (data) {
                 dataSetList.insert(data);
                 //console.log(data);
@@ -356,16 +357,19 @@ module.exports = {
 
                 });
 
+            console.log(inputs.file_path);
 
-            return exits.created({
-                level: 'ERROR',
-                message: 'FOI' + a,
-                path: inputs.file_path
-            });
+            return true;
+            // return exits.created({
+            //     level: 'ERROR',
+            //     message: 'FOI' + a,
+            //     path: inputs.file_path
+            // });
 
 
         } catch
             (err) {
+            // return true;
             return exits.internalError({
                 level: 'ERROR',
                 message: 'Erro imprevisto, contate um adminstrador do sistema e informe',
