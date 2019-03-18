@@ -146,6 +146,7 @@ module.exports = {
                                     let mediaAcertoPonderadoTotal = 0;
                                     let mediaErroPonderadoTotal = 0;
 
+                              
                                     for (let m = 0; m < 10; m++) {
 
                                         let mediaAcertoMajoritario = 0;
@@ -290,9 +291,6 @@ module.exports = {
                                         mediaAcertoMajoritario = ((majorityAcertCounter * 100) / (majorityAcertCounter + majorityErrosCounter));
                                         mediaErroMajoritario = ((majorityErrosCounter * 100) / (majorityAcertCounter + majorityErrosCounter));
 
-                                        // console.log('M: ' + m);
-                                        // console.log(mediaAcertoMajoritario);
-
                                         MajorityAcerts[m] = mediaAcertoMajoritario;
                                         MajorityErros[m] = mediaErroMajoritario;
 
@@ -311,6 +309,17 @@ module.exports = {
 
 
                                         //Troca os Arquivos
+
+                                        dataSetList = new LinkedList();
+                                        dataSetArray_C1 = []; // All objects of type class 1
+                                        dataSetArray_C2 = []; // All objects of type class 2
+                                        trainingArray = []; // 50% of dataSet
+                                        validationArray = []; // 25% of dataSet
+                                        testArray = [] ;// 25% of dataSet
+
+                                        dataSetArray.forEach(function (data) {
+                                            dataSetList.insert(data);
+                                        });
 
                                         let empty = dataSetList.isEmpty();
 
@@ -367,6 +376,11 @@ module.exports = {
                                         shuffle(trainingArray);
 
                                         //TODO Remove files before save the new one
+                                        fs.unlinkSync('uploads/Adult - Gilberto e Henrique.csv');
+                                        fs.unlinkSync('uploads/training.csv');
+                                        fs.unlinkSync('uploads/validation.csv');
+                                        fs.unlinkSync('uploads/test.csv');
+
 
                                         let dataSetcsv = fs.createWriteStream('uploads/Adult - Gilberto e Henrique.csv');
                                         let trainingcsv = fs.createWriteStream('uploads/training.csv');
@@ -386,8 +400,6 @@ module.exports = {
                                             dataSetList.insert(data);
                                         });
 
-                                        // console.log('dsA: ' + dataSetArray.length);
-                                        // console.log('dsL: ' + dataSetList.size);
                                     }
 
                                     // Calculo das medias
@@ -404,22 +416,13 @@ module.exports = {
                                     let desvioPadraoPonderadoAcertos = 0;
                                     let desvioPadraoPonderadoErros = 0;
 
-
-                                    for (let m = 0; m < MajorityAcerts.length; m++) {
+                                    for (let m = 0; m < 10; m++) {
                                         desvioPadraoMajoritarioAcertos = desvioPadraoMajoritarioAcertos + (Math.pow((MajorityAcerts[m] - mediaAcertoMajoritarioTotal), 2));
-                                    }
-
-                                    for (let m = 0; m < MajorityErros.length; m++) {
                                         desvioPadraoMajoritarioErros = desvioPadraoMajoritarioErros + (Math.pow((MajorityErros[m] - mediaErroMajoritarioTotal), 2));
-                                    }
-
-                                    for (let m = 0; m < WeightedAcerts.length; m++) {
                                         desvioPadraoPonderadoAcertos = desvioPadraoPonderadoAcertos + (Math.pow((WeightedAcerts[m] - mediaAcertoPonderadoTotal), 2));
-                                    }
-
-                                    for (let m = 0; m < WeightedErros.length; m++) {
                                         desvioPadraoPonderadoErros = desvioPadraoPonderadoErros + (Math.pow((WeightedErros[m] - mediaErroPonderadoTotal), 2));
                                     }
+                                    
 
                                     desvioPadraoMajoritarioAcertos = Math.sqrt(desvioPadraoMajoritarioAcertos);
                                     desvioPadraoMajoritarioErros = Math.sqrt(desvioPadraoMajoritarioErros);
