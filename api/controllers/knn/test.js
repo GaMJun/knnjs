@@ -146,7 +146,7 @@ module.exports = {
                                     let mediaAcertoPonderadoTotal = 0;
                                     let mediaErroPonderadoTotal = 0;
 
-
+                              
                                     for (let m = 0; m < 10; m++) {
 
                                         let mediaAcertoMajoritario = 0;
@@ -291,7 +291,6 @@ module.exports = {
                                         mediaAcertoMajoritario = ((majorityAcertCounter * 100) / (majorityAcertCounter + majorityErrosCounter));
                                         mediaErroMajoritario = ((majorityErrosCounter * 100) / (majorityAcertCounter + majorityErrosCounter));
 
-
                                         MajorityAcerts[m] = mediaAcertoMajoritario;
                                         MajorityErros[m] = mediaErroMajoritario;
 
@@ -400,6 +399,7 @@ module.exports = {
                                         dataSetArray.forEach(function (data) {
                                             dataSetList.insert(data);
                                         });
+
                                     }
 
                                     // Calculo das medias
@@ -415,7 +415,6 @@ module.exports = {
                                     let desvioPadraoMajoritarioErros = 0;
                                     let desvioPadraoPonderadoAcertos = 0;
                                     let desvioPadraoPonderadoErros = 0;
-
 
                                     for (let m = 0; m < 10; m++) {
                                         desvioPadraoMajoritarioAcertos = desvioPadraoMajoritarioAcertos + (Math.pow((MajorityAcerts[m] - mediaAcertoMajoritarioTotal), 2));
