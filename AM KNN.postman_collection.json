@@ -6,20 +6,55 @@
 	},
 	"item": [
 		{
+			"name": "MandarTeste",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"k\":3,\n\t\"file_path\": \"uploads/Adult - Gilberto e Henrique.csv\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3712/knnTest",
+					"host": [
+						"localhost"
+					],
+					"port": "3712",
+					"path": [
+						"knnTest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "MandarArquivo",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": ""
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": ""
+						}
+					]
 				},
 				"url": {
-					"raw": "localhost:6666/knn",
+					"raw": "localhost:3712/knn",
 					"host": [
 						"localhost"
 					],
-					"port": "6666",
+					"port": "3712",
 					"path": [
 						"knn"
 					]
