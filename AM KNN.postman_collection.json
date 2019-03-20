@@ -1,7 +1,8 @@
 {
 	"info": {
-		"_postman_id": "f4b4530b-f003-4293-a1fa-c90d566d20c7",
-		"name": "AM KNN",
+		"_postman_id": "933704bc-a852-49b1-9e24-eee2a6dd987c",
+		"name": "KNNJS",
+		"description": "# Introdução\n[API KNNJS](https://github.com/GaMJun/knnjs) é uma API\n\n# Visão Geral\nEsta API fornece rotas para um classificador K-Nearest Neighbors.\n\n1. A API irá responder apenas a conexões seguras `SSL`. Requisições via `HTTP` serão redirecionadas para uma conexão segura `HTTPS`.\n2. Todas as respostas são fornecidas utilizando o formato `JSON`, caso haja erros, alertas ou informações será fornecido duas chaves (`level` e `message`), onde `level` descreve o nível da mensagem (`ERROR` ou `INFO`) e `message` é uma descrição textual da ocorrência.\n3. Todas as rotas fornecem status de resposta apropriados com a resposta, onde `2XX` informa que tudo ocorreu como o esperado, status `4XX` e `5XX` informam erros com a requisição ou com o servidor.\n\n# Referência da API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -19,23 +20,129 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"k\":3,\n\t\"file_path\": \"uploads/Adult - Gilberto e Henrique.csv\"\n}"
+					"raw": "{\n\t\"k\":7,\n\t\"iterations\":32,\n\t\"file_path\": \"uploads/Adult - Gilberto e Henrique.csv\"\n}"
 				},
 				"url": {
-					"raw": "localhost:3712/knnTest",
+					"raw": "localhost:3712/knn/test",
 					"host": [
 						"localhost"
 					],
 					"port": "3712",
 					"path": [
-						"knnTest"
+						"knn",
+						"test"
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"k\":7,\n\t\"iterations\":32,\n\t\"file_path\": \"uploads/Adult - Gilberto e Henrique.csv\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3712/knn/test",
+							"host": [
+								"localhost"
+							],
+							"port": "3712",
+							"path": [
+								"knn",
+								"test"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "X-HTTP-Method-Override"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP 5.6.9"
+						},
+						{
+							"key": "X-Exit",
+							"value": "tested"
+						},
+						{
+							"key": "X-Exit-Output-Friendly-Name",
+							"value": "Adicionado com sucesso"
+						},
+						{
+							"key": "X-Exit-Output-Description",
+							"value": "Retorna uma mensagem de sucesso"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3270"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"cc6-hVYmKsbcuAIvFbOAD2P7sNdGU/U\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Mar 2019 23:04:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"level\": \"INFO\",\n    \"message\": \"Resultados para k=7\",\n    \"storeMajorityAcerts\": {\n        \"0\": 83.23699421965318,\n        \"1\": 83.23699421965318,\n        \"2\": 87.86127167630057,\n        \"3\": 84.97109826589596,\n        \"4\": 84.39306358381504,\n        \"5\": 87.86127167630057,\n        \"6\": 85.54913294797687,\n        \"7\": 87.28323699421965,\n        \"8\": 84.97109826589596,\n        \"9\": 90.7514450867052,\n        \"10\": 85.54913294797687,\n        \"11\": 87.28323699421965,\n        \"12\": 85.54913294797687,\n        \"13\": 86.1271676300578,\n        \"14\": 83.23699421965318,\n        \"15\": 86.1271676300578,\n        \"16\": 85.54913294797687,\n        \"17\": 84.39306358381504,\n        \"18\": 88.4393063583815,\n        \"19\": 88.4393063583815,\n        \"20\": 86.1271676300578,\n        \"21\": 87.28323699421965,\n        \"22\": 80.92485549132948,\n        \"23\": 85.54913294797687,\n        \"24\": 87.28323699421965,\n        \"25\": 84.97109826589596,\n        \"26\": 91.32947976878613,\n        \"27\": 79.76878612716763,\n        \"28\": 84.97109826589596,\n        \"29\": 83.23699421965318,\n        \"30\": 82.65895953757226,\n        \"31\": 84.39306358381504,\n        \"μ\": 85.60332369942196,\n        \"σ\": 2.480185249940688\n    },\n    \"storeWeightedAcerts\": {\n        \"0\": 82.65895953757226,\n        \"1\": 82.65895953757226,\n        \"2\": 87.86127167630057,\n        \"3\": 83.23699421965318,\n        \"4\": 84.39306358381504,\n        \"5\": 86.70520231213872,\n        \"6\": 84.97109826589596,\n        \"7\": 86.1271676300578,\n        \"8\": 84.97109826589596,\n        \"9\": 90.17341040462428,\n        \"10\": 83.81502890173411,\n        \"11\": 86.70520231213872,\n        \"12\": 85.54913294797687,\n        \"13\": 86.1271676300578,\n        \"14\": 83.23699421965318,\n        \"15\": 84.97109826589596,\n        \"16\": 84.97109826589596,\n        \"17\": 82.65895953757226,\n        \"18\": 87.28323699421965,\n        \"19\": 87.28323699421965,\n        \"20\": 84.97109826589596,\n        \"21\": 87.28323699421965,\n        \"22\": 80.34682080924856,\n        \"23\": 84.97109826589596,\n        \"24\": 87.28323699421965,\n        \"25\": 84.39306358381504,\n        \"26\": 89.01734104046243,\n        \"27\": 79.1907514450867,\n        \"28\": 83.81502890173411,\n        \"29\": 82.08092485549133,\n        \"30\": 83.23699421965318,\n        \"31\": 83.81502890173411,\n        \"μ\": 84.89884393063583,\n        \"σ\": 2.3753706878518233\n    },\n    \"storeMajorityErros\": {\n        \"0\": 16.76300578034682,\n        \"1\": 16.76300578034682,\n        \"2\": 12.138728323699421,\n        \"3\": 15.028901734104046,\n        \"4\": 15.606936416184972,\n        \"5\": 12.138728323699421,\n        \"6\": 14.45086705202312,\n        \"7\": 12.716763005780347,\n        \"8\": 15.028901734104046,\n        \"9\": 9.248554913294798,\n        \"10\": 14.45086705202312,\n        \"11\": 12.716763005780347,\n        \"12\": 14.45086705202312,\n        \"13\": 13.872832369942197,\n        \"14\": 16.76300578034682,\n        \"15\": 13.872832369942197,\n        \"16\": 14.45086705202312,\n        \"17\": 15.606936416184972,\n        \"18\": 11.560693641618498,\n        \"19\": 11.560693641618498,\n        \"20\": 13.872832369942197,\n        \"21\": 12.716763005780347,\n        \"22\": 19.07514450867052,\n        \"23\": 14.45086705202312,\n        \"24\": 12.716763005780347,\n        \"25\": 15.028901734104046,\n        \"26\": 8.670520231213873,\n        \"27\": 20.23121387283237,\n        \"28\": 15.028901734104046,\n        \"29\": 16.76300578034682,\n        \"30\": 17.341040462427745,\n        \"31\": 15.606936416184972,\n        \"μ\": 14.396676300578038,\n        \"σ\": 2.480185249940689\n    },\n    \"storeWeightedErros\": {\n        \"0\": 17.341040462427745,\n        \"1\": 17.341040462427745,\n        \"2\": 12.138728323699421,\n        \"3\": 16.76300578034682,\n        \"4\": 15.606936416184972,\n        \"5\": 13.294797687861271,\n        \"6\": 15.028901734104046,\n        \"7\": 13.872832369942197,\n        \"8\": 15.028901734104046,\n        \"9\": 9.826589595375722,\n        \"10\": 16.184971098265898,\n        \"11\": 13.294797687861271,\n        \"12\": 14.45086705202312,\n        \"13\": 13.872832369942197,\n        \"14\": 16.76300578034682,\n        \"15\": 15.028901734104046,\n        \"16\": 15.028901734104046,\n        \"17\": 17.341040462427745,\n        \"18\": 12.716763005780347,\n        \"19\": 12.716763005780347,\n        \"20\": 15.028901734104046,\n        \"21\": 12.716763005780347,\n        \"22\": 19.653179190751445,\n        \"23\": 15.028901734104046,\n        \"24\": 12.716763005780347,\n        \"25\": 15.606936416184972,\n        \"26\": 10.982658959537572,\n        \"27\": 20.809248554913296,\n        \"28\": 16.184971098265898,\n        \"29\": 17.91907514450867,\n        \"30\": 16.76300578034682,\n        \"31\": 16.184971098265898,\n        \"μ\": 15.101156069364167,\n        \"σ\": 2.3753706878518255\n    }\n}"
+				}
+			]
 		},
 		{
-			"name": "MandarArquivo",
+			"name": "Carregar Dataset",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -50,17 +157,260 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3712/knn",
+					"raw": "localhost:3712/knn/load",
 					"host": [
 						"localhost"
 					],
 					"port": "3712",
 					"path": [
-						"knn"
+						"knn",
+						"load"
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3712/knn/load",
+							"host": [
+								"localhost"
+							],
+							"port": "3712",
+							"path": [
+								"knn",
+								"load"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "X-HTTP-Method-Override"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP 5.6.9"
+						},
+						{
+							"key": "X-Exit",
+							"value": "loaded"
+						},
+						{
+							"key": "X-Exit-Output-Friendly-Name",
+							"value": "Carregado com sucesso com sucesso"
+						},
+						{
+							"key": "X-Exit-Output-Description",
+							"value": "Retorna uma mensagem de sucesso"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "141"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"8d-XTqN6/fa0UMSGcRcdtAOrotpPOY\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Mar 2019 23:01:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"level\": \"INFO\",\n    \"message\": \"Base de dados carregada e dividida com sucesso. Armazenado em: \",\n    \"path\": \"uploads/Adult - Gilberto e Henrique.csv\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Validar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3712/knn/validation",
+					"host": [
+						"localhost"
+					],
+					"port": "3712",
+					"path": [
+						"knn",
+						"validation"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Created",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3712/knn/validation",
+							"host": [
+								"localhost"
+							],
+							"port": "3712",
+							"path": [
+								"knn",
+								"validation"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP 5.6.9"
+						},
+						{
+							"key": "X-Exit",
+							"value": "validated"
+						},
+						{
+							"key": "X-Exit-Output-Friendly-Name",
+							"value": "Validado com sucesso"
+						},
+						{
+							"key": "X-Exit-Output-Description",
+							"value": "Retorna uma mensagem de sucesso"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "681"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a9-FstBbdscv9nozoY/mgaFtwaPoPg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Mar 2019 23:01:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"results\": [\n        {\n            \"k\": 1,\n            \"majoritaryAvg\": 76.30057803468208,\n            \"weightedAvg\": 76.30057803468208\n        },\n        {\n            \"k\": 3,\n            \"majoritaryAvg\": 85.54913294797687,\n            \"weightedAvg\": 84.39306358381504\n        },\n        {\n            \"k\": 5,\n            \"majoritaryAvg\": 86.70520231213872,\n            \"weightedAvg\": 86.70520231213872\n        },\n        {\n            \"k\": 7,\n            \"majoritaryAvg\": 87.28323699421965,\n            \"weightedAvg\": 87.28323699421965\n        },\n        {\n            \"k\": 9,\n            \"majoritaryAvg\": 87.28323699421965,\n            \"weightedAvg\": 87.86127167630057\n        },\n        {\n            \"k\": 11,\n            \"majoritaryAvg\": 87.28323699421965,\n            \"weightedAvg\": 87.28323699421965\n        },\n        {\n            \"k\": 13,\n            \"majoritaryAvg\": 86.1271676300578,\n            \"weightedAvg\": 86.70520231213872\n        },\n        {\n            \"k\": 15,\n            \"majoritaryAvg\": 86.70520231213872,\n            \"weightedAvg\": 87.28323699421965\n        }\n    ],\n    \"message\": \"Validado com sucesso. Agora escolha o K que melhor lhe agrade\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8eeaebec-54fb-4106-870c-e175d2be6cc0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c1ada7cb-86e5-4b91-a38d-ef17b2482060",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
