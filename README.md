@@ -111,7 +111,7 @@ sudo yarn start
 | <a href="https://github.com/GaMJun" target="_blank">**Gilberto Antunes**</a> | <a href="https://github.com/HenriqueTome1" target="_blank">**Henrique Tomé**</a> |
 |:---:|:---:|
 | <a href="https://www.linkedin.com/in/gamjun"><img alt="Gilberto Antunes" src="https://avatars0.githubusercontent.com/u/27792876" width="150" height="150"></a> | <a href="https://www.linkedin.com/in/tom%C3%A9/"><img alt="Henrique Tomé" src="https://avatars1.githubusercontent.com/u/27792676" width="150" height="150"></a> |
-| <a href="https://github.com/GaMJun" target="_blank">`  github.com/gamjun  `</a> | <a href="https://github.com/MuriloSchaefer" target="_blank">`github.com/MuriloSchaefer`</a> | 
+| <a href="https://github.com/GaMJun" target="_blank">`  github.com/gamjun  `</a> | <a href="https://github.com/HenriqueTome1" target="_blank">`github.com/HenriqueTome1`</a> | 
 
 ---
 
