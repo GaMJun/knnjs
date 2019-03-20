@@ -1,5 +1,5 @@
 {
-  "name": "KNNJS",
+  "name": "knnjs",
   "version": "1.0.0",
   "description": "Classificador K-Nearest Neighbors",
   "main": "index.js",

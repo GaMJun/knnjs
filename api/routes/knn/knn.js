@@ -20,45 +20,22 @@ const upload = multer({
 module.exports = async function (app) {
     const asAction = require('machine-as-action'); //machine to build the functions
 
-    app.route('/knn')
+    app.route('/knn/load')
         .post(upload.single('file'), (req, res, next) => {
             req.params.app = app;
             req.params.file_path = req.file.path;
             next();
         }, asAction(app.controllers.knn.load));
 
-    app.route('/knn')
+    app.route('/knn/validation')
         .get((req, res, next) => {
             req.params.app = app;
-            req.params.headers = req.headers;
             next();
         }, asAction(app.controllers.knn.validation));
 
-    app.route('/knnTest')
+    app.route('/knn/test')
         .post((req, res, next) => {
             req.params.app = app;
-            req.params.headers = req.headers;
             next();
         }, asAction(app.controllers.knn.test));
-
-    // app.route('/restricted')
-    //     .get((req, res, next) => {
-    //         req.params.app = app;
-    //         req.params.headers = req.headers;
-    //         next()
-    //     }, asAction(app.controllers.ademir.account.get));
-    //
-    // app.route('/restricted')
-    //     .patch((req, res, next) => {
-    //         req.params.app = app;
-    //         req.params.headers = req.headers;
-    //         if (validateIncommingInfo(req.body, res)) next();
-    //     }, asAction(app.controllers.ademir.account.update));
-    //
-    // app.route('/restricted')
-    //     .delete((req, res, next) => {
-    //         req.params.app = app;
-    //         req.params.headers = req.headers;
-    //         next()
-    //     }, asAction(app.controllers.ademir.account.delete));
 };

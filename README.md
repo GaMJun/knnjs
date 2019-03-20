@@ -78,8 +78,17 @@ sudo apt-get update
 sudo apt-get install yarn
 ``` 
 
+> Inicie a API
+
+```shell
+Dentro da pasta raiz do projeto execute
+sudo yarn start
+``` 
+
+
 > Importe o backup do postman
-```
+
+```shell
 Este estará localizado na pasta raiz do projeto pelo nome de AM KNN.postman_collection.json
 ```
 
@@ -89,16 +98,8 @@ Este estará localizado na pasta raiz do projeto pelo nome de AM KNN.postman_col
 
 ```shell
 sudo killall -9 node 
-sudo service mongod start
-sudo yarn run dev
-``` 
-
->Iniciar API
-
-```shell
 sudo yarn start
 ``` 
-
 ---
 
 <h2><a href="https://documenter.getpostman.com/view/6350371/S17oyAcg" target="_blank">Documentação</a></h2>
