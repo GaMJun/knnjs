@@ -119,9 +119,9 @@ module.exports = {
                                             if (minors[i] > majorityVotes[j]) {
                                                 minors[i] = majorityVotes[j];
                                                 minorsIndex[i] = j;
-                                                majorityVotes[j] = Infinity;
                                             }
                                         }
+                                        majorityVotes[minorsIndex[i]] = Infinity;
                                     }
 
                                     // Vote counter for the classes
@@ -148,9 +148,9 @@ module.exports = {
                                             if (biggers[i] < weightedVotes[j]) {
                                                 biggers[i] = weightedVotes[j];
                                                 biggersIndex[i] = j;
-                                                weightedVotes[j] = 0;
                                             }
                                         }
+                                        weightedVotes[biggersIndex[i]] = 0;
                                     }
 
                                     // Vote counter for the classes reset

@@ -154,89 +154,59 @@ module.exports = {
                                     biggersIndex[i] = 0;
                                 }
 
-                                // VOTOS MAJORITARIOS
-                                majorityVotes.forEach(function (vote, index) {
-                                    // se o voto for menor que o valor armazenado na primeira posiçao do vetor minors faz-se
-                                    // um shift nos elementos e insere o voto na posicao 0
-                                    if (vote < minors[0]) {
+                                //Majoritary Votes
 
-                                        for (let j = minors.length - 1; j > 0; j--) {
-                                            minors[j] = minors[j - 1];
-                                            minorsIndex[j] = minorsIndex[j - 1];
+                                // Finding the k minors values
+                                for (let i = 0; i < k; i++) {
+                                    for (let j = 0; j < majorityVotes.length; j++) {
+                                        if (minors[i] > majorityVotes[j]) {
+                                            minors[i] = majorityVotes[j];
+                                            minorsIndex[i] = j;
                                         }
-                                        minors[0] = vote;
-                                        minorsIndex[0] = index;
                                     }
-                                });
+                                    majorityVotes[minorsIndex[i]] = Infinity;
+                                }
 
-
-                                // contadores de votos para cada classe
+                                // Vote counter for the classes
                                 let class1 = 0;
                                 let class2 = 0;
 
                                 minorsIndex.forEach(function (position) {
-                                    let object = trainingArray[position];
-                                    if (object.Class === '1') {
-                                        class1++;
-                                    } else {
-                                        class2++;
-                                    }
+                                    trainingArray[position].Class === '1' ? class1++ : class2++;
                                 });
 
-                                // Validaçao dos votos majoritarios
+                                // Validating the majoritary votes
                                 if (class1 > class2) {
-                                    if (testArray[i].Class === '1') {
-                                        majorityHitCounter++;
-                                    } else {
-                                        majorityMissCounter++;
-                                    }
+                                    testArray[i].Class === '1' ? majorityHitCounter++ : majorityMissCounter++;
                                 } else if (class1 < class2) {
-                                    if (testArray[i].Class === '2') {
-                                        majorityHitCounter++;
-                                    } else {
-                                        majorityMissCounter++;
-                                    }
+                                    testArray[i].Class === '2' ? majorityHitCounter++ : majorityMissCounter++;
                                 }
 
 
-                                // VOTOS PONDERADOS
-                                weightedVotes.forEach(function (vote, index) {
-                                    if (vote > biggers[0]) {
-                                        for (let j = biggers.length - 1; j > 0; j--) {
-                                            biggers[j] = biggers[j - 1];
-                                            biggersIndex[j] = biggersIndex[j - 1];
+                                // Finding the k biggers values
+                                for (let i = 0; i < k; i++) {
+                                    for (let j = 0; j < weightedVotes.length; j++) {
+                                        if (biggers[i] < weightedVotes[j]) {
+                                            biggers[i] = weightedVotes[j];
+                                            biggersIndex[i] = j;
                                         }
-                                        biggers[0] = vote;
-                                        biggersIndex[0] = index;
                                     }
-                                });
+                                    weightedVotes[biggersIndex[i]] = 0;
+                                }
 
-                                // reset das variaveis responsaveis por contar os votos para cada classe
+                                // Vote counter for the classes reset
                                 class1 = 0;
                                 class2 = 0;
 
-                                biggersIndex.forEach(function (position) {
-                                    let object = trainingArray[position];
-                                    if (object.Class === '1') {
-                                        class1 = class1 + weightedVotes[position];
-                                    } else {
-                                        class2 = class2 + weightedVotes[position];
-                                    }
+                                biggersIndex.forEach(function (position, index) {
+                                    trainingArray[position].Class === '1' ? class1 = class1 + biggers[index] : class2 = class2 + biggers[index];
                                 });
 
-                                // Validaçao dos votos
+                                // Validating the weighted votes
                                 if (class1 > class2) {
-                                    if (testArray[i].Class === '1') {
-                                        weightedHitCounter++;
-                                    } else {
-                                        weightedMissCounter++;
-                                    }
+                                    testArray[i].Class === '1' ? weightedHitCounter++ : weightedMissCounter++;
                                 } else if (class1 < class2) {
-                                    if (testArray[i].Class === '2') {
-                                        weightedHitCounter++;
-                                    } else {
-                                        weightedMissCounter++;
-                                    }
+                                    testArray[i].Class === '2' ? weightedHitCounter++ : weightedMissCounter++;
                                 }
                             }
 
@@ -259,7 +229,7 @@ module.exports = {
                             mediaErroPonderadoTotal = mediaErroPonderadoTotal + mediaErroPonderado;
 
 
-                            //Troca os Arquivos
+                            //Change files
 
                             dataSetList = new LinkedList();
                             dataSetArray_C1 = []; // All objects of type class 1
@@ -353,7 +323,7 @@ module.exports = {
 
                         }
 
-                        // Calculo das medias
+                        //Averages calculation
                         mediaAcertoMajoritarioTotal = (mediaAcertoMajoritarioTotal / 10);
                         mediaErroMajoritarioTotal = mediaErroMajoritarioTotal / 10;
 
@@ -361,7 +331,7 @@ module.exports = {
                         mediaErroPonderadoTotal = mediaErroPonderadoTotal / 10;
 
 
-                        //Calculo do Desvio Padrao
+                        //Standard Deviation Calculation (DP)
                         let desvioPadraoMajoritarioAcertos = 0;
                         let desvioPadraoMajoritarioErros = 0;
                         let desvioPadraoPonderadoAcertos = 0;
@@ -507,31 +477,6 @@ module.exports = {
                         storeWeightedErros.desvPadrao = desvioPadraoPonderadoErros;
 
                         resultsArray.push(storeWeightedErros);
-
-                        // resultsArray = MajorityAcerts.concat(mediaAcertoMajoritarioTotal);
-                        // resultsArray = resultsArray.concat(desvioPadraoMajoritarioAcertos);
-                        // // resultsArray = resultsArray.concat('\n');
-                        //
-                        // resultsArray = resultsArray.concat(MajorityErros);
-                        // resultsArray = resultsArray.concat(mediaErroMajoritarioTotal);
-                        // resultsArray = resultsArray.concat(desvioPadraoMajoritarioErros);
-                        // // resultsArray = resultsArray.concat('\n');
-                        //
-                        // resultsArray = resultsArray.concat(WeightedAcerts);
-                        // resultsArray = resultsArray.concat(mediaAcertoPonderadoTotal);
-                        // resultsArray = resultsArray.concat(desvioPadraoPonderadoAcertos);
-                        // // resultsArray = resultsArray.concat('\n');
-                        //
-                        // resultsArray = resultsArray.concat(WeightedErros);
-                        // resultsArray = resultsArray.concat(mediaErroPonderadoTotal);
-                        // resultsArray = resultsArray.concat(desvioPadraoPonderadoErros);
-                        // // resultsArray = resultsArray.concat('\n');
-
-
-                        // for (let j=0; j < resultsArray.length; j++){
-                        //     console.log(resultsArray[j]);
-                        // }
-
 
                         let resultsCSV = fs.createWriteStream('uploads/results.csv');
 
