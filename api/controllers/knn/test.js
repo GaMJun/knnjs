@@ -2,7 +2,7 @@ const fs = require("fs");
 const csv = require("fast-csv");
 const LinkedList = require('dbly-linked-list');
 
-// Funçao para dar shuffle nos vetores
+// Function to shuffle arrays
 function shuffle(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -80,12 +80,12 @@ module.exports = {
 
                         let k = inputs.k;
 
-                        let majorityVotes = []; // Vetor para os votos majoritários
-                        let majorityHitCounter = 0; // counter de acertos dos votos majoritarios
-                        let majorityMissCounter = 0; // counter de erros dos votos majoritarios
-                        let weightedVotes = []; // Vetor para os votos ponderados
-                        let weightedHitCounter = 0; // counter de acertos dos votos ponderados
-                        let weightedMissCounter = 0; // counter de errps dos votos ponderados
+                        let majorityVotes = []; // Array of majority votes
+                        let majorityHitCounter = 0; // Counter of hits from majority votes
+                        let majorityMissCounter = 0; // Counter of miss from majority votes
+                        let weightedVotes = []; // Array of weighted votes
+                        let weightedHitCounter = 0; // Counter of hits from weighted votes
+                        let weightedMissCounter = 0; // Counter of miss from weighted votes
 
                         let MajorityAcerts = [];
                         let MajorityErros = [];
@@ -111,10 +111,13 @@ module.exports = {
                             weightedHitCounter = 0;
                             weightedMissCounter = 0;
 
-                            // para cada item do vetor de validaçao
+                            // For each validationArray instance
                             for (let i = 0; i < testArray.length; i++) {
-                                // percorre-se todos os elementos do vetor de treino
+                                // Run every trainingArray instances
                                 for (let j = 0; j < trainingArray.length; j++) {
+
+                                    // Calculating the Euclidean distance between the item in the validation vector and each item in the training vector
+                                    // Storing in majorityVotes array
                                     majorityVotes[j] = Math.sqrt(
                                         Math.pow((testArray[i].A1 - trainingArray[j].A1), 2) +
                                         Math.pow((testArray[i].A2 - trainingArray[j].A2), 2) +
@@ -132,20 +135,20 @@ module.exports = {
                                         Math.pow((testArray[i].A14 - trainingArray[j].A14), 2)
                                     );
 
-                                    // Calculo do peso ponderado
+                                    // Calculation of the inverse of the Euclidean distance
                                     weightedVotes[j] = (1 / majorityVotes[j]);
                                 }
 
-                                // vetor dos menores valores das distancias euclidianas para cada tupla do vetor de validaçao
+                                // Vector of the lowest values of the Euclidean distances for each tuple of the validation vector
                                 let minors = [];
-                                // vetor para armazenar os index dos valores do vetor acima
+                                // Vector to store the index of the above vector values
                                 let minorsIndex = [];
 
-                                // vetor dos maiores elementos dos pesos normalizados
+                                // Vector of the largest elements of the normalized weights
                                 let biggers = [];
                                 let biggersIndex = [];
 
-                                // inicializaçao/reset dos vetores
+                                // Initialization / reset of arrays
                                 for (let i = 0; i < k; i++) {
                                     minors[i] = 1000000;
                                     minorsIndex[i] = 0;
@@ -296,13 +299,13 @@ module.exports = {
                             shuffle(validationArray);
                             shuffle(trainingArray);
 
-                            //TODO Remove files before save the new one
+                            // Removing older files
                             fs.unlinkSync('uploads/Adult - Gilberto e Henrique.csv');
                             fs.unlinkSync('uploads/training.csv');
                             fs.unlinkSync('uploads/validation.csv');
                             fs.unlinkSync('uploads/test.csv');
 
-
+                            // Writing new files
                             let dataSetcsv = fs.createWriteStream('uploads/Adult - Gilberto e Henrique.csv');
                             let trainingCSV = fs.createWriteStream('uploads/training.csv');
                             let validationCSV = fs.createWriteStream('uploads/validation.csv');
